@@ -1,19 +1,11 @@
 import React from "react";
 import Logo from "../assets/youtube_logo.jpg";
-import { useDispatch } from "react-redux";
-import { toggleMenu } from "../redux/appSlice";
 
-const Header = () => {
-  const dispatch = useDispatch();
-
-  const handleToggleMenu = () => {
-    dispatch(toggleMenu());
-  };
-
+const Header = ({ toggleMenu }) => {
   return (
     <header className="bg-white h-16 relative sm:fixed w-full px-4 sm:px-6 z-10 flex items-center justify-between">
       <div className="flex items-center">
-        <div onClick={handleToggleMenu}>
+        <div onClick={toggleMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

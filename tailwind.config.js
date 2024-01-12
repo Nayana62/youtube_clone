@@ -8,9 +8,9 @@ module.exports = {
 
       md: "768px",
 
-      lg: "1300px",
+      lg: "1000px",
 
-      xl: "1200px",
+      xl: "1250px",
 
       "2xl": "1536px",
     },

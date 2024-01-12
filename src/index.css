@@ -15,6 +15,10 @@
   display: none;
 }
 
+.suggested-videos::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar:hover::-webkit-scrollbar {
   display: block;
 }
@@ -24,7 +28,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
   border-radius: 20px;
 }
 
@@ -35,4 +39,8 @@
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 20px;
+}
+
+.overlay {
+  z-index: 4;
 }

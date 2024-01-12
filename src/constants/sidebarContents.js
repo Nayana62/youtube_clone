@@ -1,4 +1,3 @@
-import React from "react";
 import HomeOutlined from "../assets/homeOutlined.svg";
 import shortsOutlined from "../assets/shortsOutlined.svg";
 import subscriptionsOutlined from "../assets/subscriptionsOutlined.svg";
@@ -18,13 +17,12 @@ import sports from "../assets/sports.svg";
 import learning from "../assets/learning.svg";
 import fashion from "../assets/fashion.svg";
 import podcasts from "../assets/podcasts.svg";
-import { useSelector } from "react-redux";
-import SidebarList from "./SidebarList";
 
-const sidebarContents = [
+export const sidebarContents = [
   {
     id: 1,
     title: "Home",
+    link: "/",
     icon: HomeOutlined,
   },
   {
@@ -118,46 +116,3 @@ const sidebarContents = [
     icon: podcasts,
   },
 ];
-
-const Sidebar = () => {
-  const { isMenuOpen } = useSelector((store) => store.app);
-
-  return (
-    <>
-      <aside
-        className={`sidebar ${
-          isMenuOpen ? "sm:w-56 xl:w-24" : "sm:w-24 xl:w-56"
-        } h-16 pb-20 sm:h-full p-2 sm:pr-8 fixed bg-white bottom-0 flex flex-row sm:flex-col justify-evenly sm:justify-start sm:top-16 overflow-y-auto z-6`}
-      >
-        {sidebarContents.slice(0, 4).map((content) => {
-          const { title, icon, id } = content;
-          return <SidebarList title={title} icon={icon} id={id} />;
-        })}
-
-        <div
-          className={`${
-            isMenuOpen ? "sm:block xl:hidden" : "sm:hidden xl:block"
-          }`}
-        >
-          <p className="border-t border-gray-300 my-4"></p>
-
-          {sidebarContents.slice(4, 8).map((content) => {
-            const { title, icon, id } = content;
-            return <SidebarList title={title} icon={icon} id={id} />;
-          })}
-
-          <p className="border-t border-gray-300 my-4"></p>
-
-          <h3 className="ml-5 font-bold mb-2">Explore</h3>
-
-          {sidebarContents.slice(8, 20).map((content) => {
-            const { title, icon, id } = content;
-            return <SidebarList title={title} icon={icon} id={id} />;
-          })}
-        </div>
-      </aside>
-    </>
-  );
-};
-
-export default Sidebar;
