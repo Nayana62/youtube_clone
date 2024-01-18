@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# YouTube Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a YouTube Clone created with React, Tailwind CSS, Redux Toolkit, React Router DOM, and the YouTube API. The goal of the project was to replicate the look and feel of the YouTube user interface while incorporating additional features to enhance the user experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 1. YouTube-Like UI
 
-### `npm start`
+The user interface is designed to closely resemble the YouTube platform, providing a familiar and intuitive experience for users.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Fully Responsive
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application is fully responsive, ensuring compatibility with various devices and screen sizes.
 
-### `npm test`
+### 3. Shimmer UI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Shimmer effects are implemented to enhance the user experience, providing a polished and visually appealing loading experience.
 
-### `npm run build`
+### 4. Infinite Scrolling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Infinite scrolling is incorporated to optimize user engagement, allowing seamless navigation through video content.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 5. Optimized Search Feature
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Live Suggestions:** As users type in the search bar, live suggestions are fetched from the YouTube API, offering real-time feedback.
+- **Debouncing:** The search functionality uses debouncing to manage the number of API calls, improving performance and reducing unnecessary requests.
+- **Caching:** Previous search suggestions are stored in the cache using Redux Toolkit, minimizing duplicate API calls.
 
-### `npm run eject`
+### 6. N-Level Comment System
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A sophisticated comment system, inspired by Reddit, is implemented, allowing users to engage in discussions at various levels.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 7. Live Chat Feature
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Users can participate in live chat-like discussions, where comments are loaded using API polling. The size of chats is limited to prevent page freezing and ensure a smooth user experience.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+- **React:** Building the user interface and managing the application state.
+- **Tailwind CSS:** Styling the components with a utility-first CSS framework.
+- **Redux Toolkit:** State management for caching, handling search suggestions, and managing comments.
+- **React Router DOM:** Navigating between different pages within the application.
+- **YouTube API:** Fetching video data, search suggestions, and chat comments.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The application is deployed on Vercel. You can access the live demo [here](https://youtube-clone-nayana62.vercel.app/).
 
-### Code Splitting
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To run the project locally, follow these steps:
 
-### Analyzing the Bundle Size
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Start the development server with `npm start`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Feel free to explore the codebase and contribute to the project!
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
