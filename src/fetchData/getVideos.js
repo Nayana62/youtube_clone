@@ -1,5 +1,7 @@
+import { YOUTUBE_SUGGESTED_VIDEOS_API } from "../constants/constants";
+
 export const getVideos = async (setVideosList) => {
-  const API = process.env.REACT_APP_YOUTUBE_VIDEOS_API;
+  const API = YOUTUBE_SUGGESTED_VIDEOS_API;
   try {
     const data = await fetch(API);
     const json = await data.json();

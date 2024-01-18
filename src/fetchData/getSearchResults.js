@@ -1,8 +1,7 @@
+import { YOUTUBE_SEARCH_API } from "../constants/constants";
+
 export const getSearchResults = async (query, setSearchResults) => {
-  const API = process.env.REACT_APP_YOUTUBE_SEARCH_API.replaceAll(
-    "%QUERY%",
-    query
-  );
+  const API = YOUTUBE_SEARCH_API.replaceAll("%QUERY%", query);
 
   try {
     const data = await fetch(API);
