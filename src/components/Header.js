@@ -1,9 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/youtube_logo.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { cacheResults } from "../redux/cacheSlice";
+import { Link, useNavigate } from "react-router-dom";
+
+const searchSuggestionsAPI =
+  process.env.REACT_APP_YOUTUBE_SEARCH_SUGGESTIONS_API;
 
 const Header = ({ toggleMenu }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const searchCache = useSelector((store) => store.cache);
+
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleSearch = (e, search) => {
+    e.preventDefault();
+    if (search !== "") {
+      const query = search.replace(" ", "+");
+      navigate(`/results?search_query=${query}`);
+      handleScrollTop();
+      setShowSuggestions(false);
+      setSearchQuery("");
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+
+    // eslint-disable-next-line
+  }, [searchQuery]);
+
+  const getSearchSuggestions = async () => {
+    try {
+      const data = await fetch(searchSuggestionsAPI + searchQuery);
+      const json = await data.json();
+      setSuggestions(json[1]);
+
+      dispatch(
+        cacheResults({
+          [searchQuery]: json[1],
+        })
+      );
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
-    <header className="bg-white h-16 relative sm:fixed w-full px-4 sm:px-6 z-10 flex items-center justify-between">
+    <header className="bg-white h-16 relative sm:fixed w-full px-4 sm:px-6 z-40 flex items-center justify-between">
       <div className="flex items-center">
         <div onClick={toggleMenu}>
           <svg
@@ -21,19 +85,35 @@ const Header = ({ toggleMenu }) => {
             />
           </svg>
         </div>
-        <img
-          src={Logo}
-          alt="youtube_logo"
-          className="h-14 ml-0 sm:ml-4 cursor-pointer"
-        />
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            alt="youtube_logo"
+            className="h-14 ml-0 sm:ml-4 cursor-pointer"
+          />
+        </Link>
       </div>
-      <div className="flex-1 flex justify-center">
+      <form className="flex-1 flex justify-center relative">
         <input
           type="text"
           placeholder="Search"
-          className="w-8/12 sm:w-5/12 py-1 px-2 sm:px-2 sm:py-2 rounded-l-full border border-[#ccc] outline-1 outline-blue-700"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => {
+            // Delay hiding suggestions to allow time for click events
+            setTimeout(() => setShowSuggestions(false), 200);
+          }}
+          className="w-8/12 sm:w-5/12 py-1 px-2 sm:px-3 sm:py-2 xl:ml-16 rounded-l-full border border-[#ccc] outline-1 outline-blue-700"
         />
-        <button className=" hover:bg-gray-200 rounded-r-full sm:py-2 px-4 border border-[#ccc]">
+        <button
+          onClick={(e) => handleSearch(e, searchQuery)}
+          className="hidden"
+        />
+        <button
+          onClick={(e) => handleSearch(e, searchQuery)}
+          className=" hover:bg-gray-200 rounded-r-full sm:py-2 px-4 border border-[#ccc] "
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -49,7 +129,20 @@ const Header = ({ toggleMenu }) => {
             />
           </svg>
         </button>
-      </div>
+        {showSuggestions && (
+          <div className="absolute z-50 bg-white top-10 sm:top-14 left-1/2 -translate-x-1/2 w-[8rem] xs:w-[12rem] sm:w-[17rem] md:w-[20rem] lg:w-[26rem] xl:w-[30rem] 2xl:w-[34rem] rounded-lg shadow-xl border-x border-gray-400">
+            {suggestions.map((suggestion) => (
+              <p
+                className="px-5 py-2 hover:bg-gray-200 cursor-pointer"
+                key={suggestion}
+                onClick={(e) => handleSearch(e, suggestion)}
+              >
+                {suggestion}
+              </p>
+            ))}
+          </div>
+        )}
+      </form>
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

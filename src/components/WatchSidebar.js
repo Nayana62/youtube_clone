@@ -101,7 +101,7 @@ const WatchSidebar = () => {
             zIndex: 99,
             overflowX: "hidden",
           },
-          overlay: { zIndex: 60 },
+          overlay: { zIndex: 80 },
         }}
       >
         <div></div>

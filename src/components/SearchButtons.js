@@ -11,7 +11,7 @@ const SearchButtons = () => {
         isMenuOpen
           ? "sm:left-24 xl:left-56 xl:w-[calc(100%-14rem)]"
           : "sm:left-56 xl:left-24 xl:w-[calc(100%-6rem)]"
-      } z-10`}
+      } z-30`}
     >
       <ButtonsList suggestions={suggestions} />
     </div>

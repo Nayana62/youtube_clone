@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./Header";
-import SearchButtons from "./SearchButtons";
 import { Outlet, useLocation } from "react-router-dom";
 import WatchSidebar from "./WatchSidebar";
 import SidebarMenu from "./SidebarMenu";
@@ -23,15 +22,16 @@ const Layout = () => {
     <div className="">
       <Header
         toggleMenu={
-          location.pathname === "/" ? handleToggleMenu : handleToggleWatchMenu
+          location.pathname === "/watch"
+            ? handleToggleWatchMenu
+            : handleToggleMenu
         }
       />
       <div>
         <div className="hidden sm:block">
-          {location.pathname === "/" ? <SidebarMenu /> : <WatchSidebar />}
+          {location.pathname === "/watch" ? <WatchSidebar /> : <SidebarMenu />}
         </div>
         <div>
-          {location.pathname === "/" && <SearchButtons />}
           <Outlet />
         </div>
       </div>

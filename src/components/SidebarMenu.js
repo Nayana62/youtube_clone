@@ -12,7 +12,7 @@ const SidebarMenu = () => {
       <aside
         className={`sidebar w-full ${
           isMenuOpen ? "sm:w-24 xl:w-56" : "sm:w-56 xl:w-24"
-        } h-16 pb-20 sm:h-full p-2 sm:pr-8 fixed bg-white bottom-0 flex flex-row sm:flex-col justify-evenly sm:justify-start sm:top-16 overflow-y-auto z-6`}
+        } h-16 pb-20 sm:h-full p-2 sm:pr-8 fixed bg-white bottom-0 flex flex-row sm:flex-col justify-evenly sm:justify-start sm:top-16 overflow-y-auto z-20`}
       >
         <div className="flex flex-row justify-evenly sm:flex-col sm:justify-center">
           <Link to={"/"}>

@@ -1,21 +1,19 @@
 import React from "react";
 import { Shimmer } from "react-shimmer";
 
-const ShimmerHome = () => {
+const ShimmerHome = ({ VideoCards }) => {
+  const BoxCount = 3 - (VideoCards % 3) + 3 || 3;
+
   return (
-    <div className="flex mb-4">
-      <Shimmer width={30} height={30}>
-        <div className="w-32 h-24 bg-gray-300"></div>
-      </Shimmer>
-      <div className="flex flex-col ml-4">
-        <Shimmer width={30} height={30}>
-          <div className="h-4 bg-gray-300 mb-2"></div>
-        </Shimmer>
-        <Shimmer width={30} height={30}>
-          <div className="h-4 bg-gray-300"></div>
-        </Shimmer>
-      </div>
-    </div>
+    <>
+      {[...Array(BoxCount)].map((_, index) => (
+        <div key={index} className="flex flex-col gap-y-4 mr-4">
+          <Shimmer width={340} height={200} />
+          <Shimmer width={340} height={20} />
+          <Shimmer width={250} height={20} />
+        </div>
+      ))}
+    </>
   );
 };
 

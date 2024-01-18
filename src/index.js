@@ -10,6 +10,13 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import WatchVideo from "./pages/WatchVideo";
 import Demo from "./components/Demo";
+import SearchResults from "./pages/SearchResults";
+import ErrorPage from "./components/ErrorPage";
+
+const error = {
+  code: 404,
+  message: "This page isn't available. Sorry about that.",
+};
 
 const appRouter = createBrowserRouter([
   {
@@ -24,11 +31,19 @@ const appRouter = createBrowserRouter([
         path: "/watch",
         element: <WatchVideo />,
       },
+      {
+        path: "/results",
+        element: <SearchResults />,
+      },
     ],
   },
   {
     path: "/demo",
     element: <Demo />,
+  },
+  {
+    path: "*",
+    element: <ErrorPage error={error} />,
   },
 ]);
 

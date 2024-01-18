@@ -5,6 +5,7 @@ const appSlice = createSlice({
   initialState: {
     isMenuOpen: true,
     isWatchMenuOpen: false,
+    isChatBoxOpen: true,
   },
   reducers: {
     openMenu: (state) => {
@@ -25,6 +26,9 @@ const appSlice = createSlice({
     toggleWatchMenu: (state) => {
       state.isWatchMenuOpen = !state.isWatchMenuOpen;
     },
+    toggleChatBox: (state) => {
+      state.isChatBoxOpen = !state.isChatBoxOpen;
+    },
   },
 });
 
@@ -35,6 +39,7 @@ export const {
   openWatchMenu,
   closeWatchMenu,
   toggleWatchMenu,
+  toggleChatBox,
 } = appSlice.actions;
 
 export default appSlice.reducer;
