@@ -3,7 +3,6 @@ import VideoCards from "../components/VideoCards";
 import ShimmerHome from "../components/ShimmerHome";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideos } from "../fetchData/getVideos";
 import SearchButtons from "../components/SearchButtons";
 import { addVideosList } from "../redux/scrollSlice";
 
@@ -44,7 +43,10 @@ const Home = () => {
 
   const getVideos = async (pageToken) => {
     try {
-      const API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=6&pageToken=${pageToken}&regionCode=IN&key=AIzaSyBTHY8ovhCI7JHXvKQ0kDFM0h0QfnfAIjs`;
+      const API = process.env.REACT_APP_YOUTUBE_VIDEOS_API.replace(
+        "%PAGE_TOKEN%",
+        pageToken
+      );
       const data = await fetch(API);
       const json = await data.json();
       dispatch(addVideosList(json));
