@@ -7,10 +7,9 @@ import SuggestedVideos from "../components/SuggestedVideos";
 import ButtonsList from "../components/ButtonsList";
 import { getVideo } from "../fetchData/getVideo";
 import Channel from "../components/Channel";
-import CommentsList from "../components/CommentsList";
-import commentsDummyData from "../constants/commentsDummyData";
 import LiveChat from "../components/LiveChat";
 import ErrorPage from "../components/ErrorPage";
+import CommentsContainer from "../components/CommentsContainer";
 
 const WatchVideo = () => {
   const dispatch = useDispatch();
@@ -32,12 +31,6 @@ const WatchVideo = () => {
     getVideo(videoId, setVideo);
     // eslint-disable-next-line
   }, []);
-
-  // if (videosList.length !== 0) {
-  //   var suggestedVideos = videosList.filter((videos) => videos.id !== videoId);
-  // }
-
-  console.log("videosList", videosList);
 
   return (
     <>
@@ -70,8 +63,7 @@ const WatchVideo = () => {
                   </div>
                 </>
               )}
-              <h2 className=" font-bold text-lg mb-2">Comments:</h2>
-              <CommentsList comments={commentsDummyData} />
+              <CommentsContainer />
             </div>
           </div>
           <div className="hidden w-4/12 lg:block">

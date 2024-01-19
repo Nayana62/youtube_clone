@@ -3,9 +3,7 @@ import Logo from "../assets/youtube_logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { cacheResults } from "../redux/cacheSlice";
 import { Link, useNavigate } from "react-router-dom";
-
-const searchSuggestionsAPI =
-  process.env.REACT_APP_YOUTUBE_SEARCH_SUGGESTIONS_API;
+import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../constants/constants";
 
 const Header = ({ toggleMenu }) => {
   const navigate = useNavigate();
@@ -52,7 +50,7 @@ const Header = ({ toggleMenu }) => {
 
   const getSearchSuggestions = async () => {
     try {
-      const data = await fetch(searchSuggestionsAPI + searchQuery);
+      const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API + searchQuery);
       const json = await data.json();
       setSuggestions(json[1]);
 
