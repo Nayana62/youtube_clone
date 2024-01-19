@@ -44,17 +44,17 @@ const SearchResults = () => {
                       }
                     >
                       {video?.id?.kind !== "youtube#playlist" && (
-                        <div className="flex gap-2 relative">
+                        <div className="flex flex-col sm:flex-row gap-2 relative">
                           <img
                             src={video?.snippet?.thumbnails?.medium?.url}
                             alt="thumbnail"
                             className={` mb-5 ${
                               video?.id?.kind === "youtube#channel"
-                                ? "rounded-full w-2/12 h-[12rem] mx-[5rem]"
-                                : "rounded-xl w-4/12 h-[12rem]"
+                                ? "rounded-full w-full sm:w-2/12 h-[12rem] mx-[5rem]"
+                                : "rounded-xl w-full sm:w-4/12 h-[12rem]"
                             }`}
                           />
-                          <div className=" w-8/12">
+                          <div className="w-full sm:w-8/12">
                             <h2 className=" text-lg">
                               {video?.snippet?.title}
                             </h2>
