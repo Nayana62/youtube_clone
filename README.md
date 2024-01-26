@@ -46,6 +46,10 @@ Users can participate in live chat-like discussions, where comments are loaded u
 
 The application is deployed on Vercel. You can access the live demo [here](https://youtube-clone-nayana62.vercel.app/).
 
+## Video Demonstration
+
+[video](https://drive.google.com/file/d/1qU035pDH18OLLvPSAA53OBVtNtMw5kbD/view?usp=sharing)
+
 ## Getting Started
 
 To run the project locally, follow these steps:
