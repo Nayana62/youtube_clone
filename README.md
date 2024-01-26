@@ -48,7 +48,6 @@ The application is deployed on Vercel. You can access the live demo [here](https
 
 ## Video Demonstration
 
-[video](https://drive.google.com/file/d/1qU035pDH18OLLvPSAA53OBVtNtMw5kbD/view?usp=sharing)
 
 ## Getting Started
 
