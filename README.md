@@ -49,6 +49,10 @@ The application is deployed on Vercel. You can access the live demo [here](https
 ## Video Demonstration
 
 
+https://github.com/Nayana62/youtube_clone/assets/95485122/36902959-409b-4425-9bba-8a5c41820137
+
+
+
 ## Getting Started
 
 To run the project locally, follow these steps:
