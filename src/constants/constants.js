@@ -3,7 +3,7 @@ export const OFFSET_LIVE_CHAT = 20;
 export const OFFSET_SCROLL = 15;
 
 export const YOUTUBE_VIDEOS_API =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=6&pageToken=%PAGE_TOKEN%&regionCode=IN&key=" +
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=9&pageToken=%PAGE_TOKEN%&regionCode=IN&key=" +
   process.env.REACT_APP_API_KEY;
 
 export const YOUTUBE_SUGGESTED_VIDEOS_API =
