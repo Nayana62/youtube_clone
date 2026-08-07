@@ -4,14 +4,14 @@ import { closeWatchMenu } from "../redux/appSlice";
 import { Link, useSearchParams } from "react-router-dom";
 import { getVideos } from "../fetchData/getVideos";
 import SuggestedVideos from "../components/SuggestedVideos";
-import ButtonsList from "../components/ButtonsList";
+import SearchButtons from "../components/SearchButtons";
 import { getVideo } from "../fetchData/getVideo";
 import Channel from "../components/Channel";
 import LiveChat from "../components/LiveChat";
 import ErrorPage from "../components/ErrorPage";
 import CommentsContainer from "../components/CommentsContainer";
 
-const WatchVideo = () => {
+  const WatchVideo = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
@@ -68,12 +68,10 @@ const WatchVideo = () => {
           </div>
           <div className="hidden w-4/12 lg:block">
             <LiveChat />
-            <div className="relative top-[6rem]">
-              <div className="search-buttons bg-white flex items-center h-12 w-[22rem] xl:w-[25rem] relative overflow-x-auto top-0 right-0 z-10">
-                <ButtonsList />
-              </div>
+            <div className="mt-6">
+              <SearchButtons compact />
             </div>
-            <div className="suggested-videos w-[25rem] relative right-0 top-[7rem] z-6">
+            <div className="suggested-videos w-[25rem] relative right-0 mt-2  z-6">
               {videosList.length !== 0 && (
                 <div className="">
                   {videosList

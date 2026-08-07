@@ -3,7 +3,7 @@ export const suggestions = [
   "Music",
   "Computer Programming",
   "Comedy",
-  "Namaste JavaScript",
+  "ReactJS",
   "News",
   "Podcasts",
   "Coding",

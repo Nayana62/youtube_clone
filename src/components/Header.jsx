@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import Logo from "../assets/youtube_logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { cacheResults } from "../redux/cacheSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { YOUTUBE_SEARCH_SUGGESTIONS_API } from "../constants/constants";
 
 const Header = ({ toggleMenu }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -24,13 +26,22 @@ const Header = ({ toggleMenu }) => {
   const handleSearch = (e, search) => {
     e.preventDefault();
     if (search !== "") {
-      const query = search.replace(" ", "+");
+      const query = search.replace(/ /g, "+");
       navigate(`/results?search_query=${query}`);
       handleScrollTop();
       setShowSuggestions(false);
-      setSearchQuery("");
     }
   };
+
+  useEffect(() => {
+    const query = searchParams.get("search_query");
+
+    if (location.pathname === "/results" && query) {
+      setSearchQuery(query.replace(/\+/g, " "));
+    } else if (location.pathname !== "/results") {
+      setSearchQuery("");
+    }
+  }, [location.pathname, searchParams]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,8 +76,8 @@ const Header = ({ toggleMenu }) => {
   };
 
   return (
-    <header className="bg-white h-16 relative sm:fixed w-full px-4 sm:px-6 z-40 flex items-center justify-between">
-      <div className="flex items-center">
+    <header className="bg-white h-16 relative sm:fixed w-full px-4 sm:px-4 z-40 flex items-center justify-between">
+      <div className="flex items-center gap-0 sm:gap-4">
         <div onClick={toggleMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,13 +94,15 @@ const Header = ({ toggleMenu }) => {
             />
           </svg>
         </div>
-        <Link to={"/"}>
+       <div>
+         <Link to={"/"}>
           <img
             src={Logo}
             alt="youtube_logo"
-            className="h-14 ml-0 sm:ml-4 cursor-pointer"
+            className="h-14 cursor-pointer"
           />
         </Link>
+       </div>
       </div>
       <form className="flex-1 flex justify-center relative">
         <input

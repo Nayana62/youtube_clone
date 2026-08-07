@@ -12,22 +12,25 @@ const SidebarMenu = () => {
       <aside
         className={`sidebar w-full ${
           isMenuOpen ? "sm:w-24 xl:w-56" : "sm:w-56 xl:w-24"
-        } h-16 pb-20 sm:h-full p-2 sm:pr-8 fixed bg-white bottom-0 flex flex-row sm:flex-col justify-evenly sm:justify-start sm:top-16 overflow-y-auto z-20`}
+        } sm:pb-20 sm:h-full p-2 sm:pr-4 fixed bg-white bottom-0 flex flex-row sm:flex-col justify-evenly sm:justify-start sm:top-16 overflow-y-auto z-20`}
       >
         <div className="flex flex-row justify-evenly sm:flex-col sm:justify-center">
-          <Link to={"/"}>
+          <Link to="/" className="flex-1">
             <SidebarList
               title={sidebarContents[0].title}
               icon={sidebarContents[0].icon}
             />
           </Link>
 
-          <div className="flex flex-row justify-evenly sm:flex-col sm:justify-center">
-            {sidebarContents.slice(1, 4).map((content) => {
-              const { title, icon, id } = content;
-              return <SidebarList key={id} title={title} icon={icon} />;
-            })}
-          </div>
+          {sidebarContents.slice(1, 4).map((content) => {
+            const { title, icon, id } = content;
+
+            return (
+              <div key={id} className="flex-1">
+                <SidebarList title={title} icon={icon} />
+              </div>
+            );
+          })}
         </div>
 
         <div

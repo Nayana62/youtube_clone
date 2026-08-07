@@ -18,9 +18,9 @@ export const YOUTUBE_SEARCH_SUGGESTIONS_API =
   "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_CHANNEL_API =
-  "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=%CHANNEL_ID%&key=" +
+  "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=%CHANNEL_IDS%&key=" +
   process.env.REACT_APP_API_KEY;
 
 export const YOUTUBE_SEARCH_API =
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=%QUERY%&key=" +
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&order=%ORDER%&type=video&q=%QUERY%&key=" +
   process.env.REACT_APP_API_KEY;

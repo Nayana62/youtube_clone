@@ -3,14 +3,15 @@ import { useSelector } from "react-redux";
 
 const SidebarList = ({ title, icon, link }) => {
   const { isMenuOpen } = useSelector((store) => store.app);
+  const isActive = window.location.pathname === "/";
 
   return (
     <div
-      className={`flex flex-col ${
+      className={`flex flex-col border${
         isMenuOpen
           ? "sm:flex-col sm:gap-0 xl:gap-5 xl:flex-row"
           : "sm:flex-row sm:gap-5 xl:gap-0 xl:flex-col"
-      } items-center  hover:bg-gray-200 py-2 px-4 mx-3 sm:mx-0 rounded-lg cursor-pointer`}
+      } items-center hover:bg-gray-200 py-2 px-4 mx-3 sm:mx-0 rounded-lg cursor-pointer ${isActive && title === "Home" ? "bg-gray-200" : ""}`}
     >
       <img className="w-6" src={icon} alt="" />
       <p
